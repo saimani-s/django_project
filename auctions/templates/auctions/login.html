@@ -1,0 +1,38 @@
+{% extends "auctions/layout.html" %}
+
+{% block head %}
+    <!-- Additional CSS for background image -->
+    <style>
+        body {
+            background-image: url('{% static "C:\Users\SAI MANI\Downloads\Django_Project-main\auctions\static\auctions\media\pexels-apasaric-3423860.jpg" %}'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* Ensures background covers entire viewport */
+        }
+        /* Add any additional CSS styles here */
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="bg">
+    <h2>Login</h2>
+
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+
+    <form action="{% url 'auctions:login' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input autofocus class="form-control" type="text" name="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="password" placeholder="Password">
+        </div>
+        <input class="btn btn-primary" type="submit" value="Login">
+    </form>
+
+    Don't have an account? <a href="{% url 'auctions:register' %}">Register here.</a>
+</div>
+{% endblock %}
